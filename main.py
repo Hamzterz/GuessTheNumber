@@ -10,17 +10,23 @@ From https://www.codementor.io/@ilyaas97/6-python-projects-for-beginners-yn3va03
 
 """
 
+import sys
 import random
 
-print("Type your username.")
 
-str_username = input()
+def _introduction_interaction():
+    print("Type your username.")
+    str_username = input()
+    str_correct_username_response =  "Hi {}, welcome to the Guess Your Number Game. Start typing a number between 1 and 20.".format(str_username)
+    str_incorrect_username_response = "Your input was not valid. Please type an appropriate username."
+    if (type(str_username) is str) & (str_username is not None):
+        print(str_correct_username_response)
+    else:
+        print(str_incorrect_username_response)
+        sys.exit()
 
-correct_response_username =  "Hi {}, welcome to the Guess Your Number Game. Start typing a number between 1 and 20.".format(str_username)
 
-print(correct_response_username)
-
-def game_logic():
+def _game_logic():
     bool_correct_number = False
     int_correct_number = random.randint(1,20)
     int_turn_counter = 0
@@ -39,6 +45,10 @@ def game_logic():
             break
 
 
-game_logic()
+def main():
+    _introduction_interaction()
+    _game_logic()
 
-## Not Yet refactored.
+
+if __name__ == "__main__":
+    main()
